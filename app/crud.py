@@ -13,8 +13,8 @@ def get_items(db: Session, name: str = None):
     return query.all()
 
 
-def create_item(db: Session, item_id: int, item: schemas.Item):
-    db_item = models.ItemDB(id=item_id, **item.dict())
+def create_item(db: Session, item: schemas.Item):
+    db_item = models.ItemDB(**item.dict())  # make sure to use ItemDB
     db.add(db_item)
     db.commit()
     db.refresh(db_item)

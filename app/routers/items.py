@@ -28,18 +28,14 @@ def get_items_by_name(name: str | None = Query(None), db: Session = Depends(get_
     return items
 
 
-# ✅ Create item by ID
+# ✅ Create item (auto-assign ID)
 @router.post(
-    "/create-item/{item_id}",
+    "/create-item",
     response_model=schemas.ItemResponse,
     status_code=status.HTTP_201_CREATED,
 )
-def create_item(item_id: int, item: schemas.Item, db: Session = Depends(get_db)):
-    if crud.get_item(db, item_id):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail="Item ID already exists"
-        )
-    return crud.create_item(db, item_id, item)
+def create_item(item: schemas.Item, db: Session = Depends(get_db)):
+    return crud.create_item(db, item)
 
 
 # ✅ Update item by ID (partial updates allowed)
