@@ -1,0 +1,14 @@
+/Users/raunakmanna/Documents/Programming/Python/FastAPI/
+├── .env
+├── main.py                  # Entry point
+├── app/
+│   ├── __init__.py
+│   ├── database.py          # DB engine, session, Base
+│   ├── models.py            # SQLAlchemy models
+│   ├── schemas.py           # Pydantic schemas
+│   ├── crud.py              # DB operations (create/read/update/delete)
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   └── items.py         # Routes for items
+│   └── dependencies.py      # Shared dependencies
+└── requirements.txt
